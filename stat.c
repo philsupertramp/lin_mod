@@ -62,4 +62,10 @@ vector lm(vector *x, vector *y){
   return result;
 }
 
+double coefficientOfDetermination(vector *y, vector *yHat){
+  double varY = var(y);
+  double varYHat = var(yHat);
+  return varY/varYHat;
+}
+
 #endif

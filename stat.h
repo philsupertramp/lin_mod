@@ -9,5 +9,6 @@ double mean(vector *);
 double cov(vector *, vector *);
 double var(vector *);
 vector lm(vector*, vector*);
+double coefficientOfDetermination(vector*, vector*);
 
 #endif
