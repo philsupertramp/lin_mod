@@ -6,6 +6,7 @@ a collection of functions I need(ed) to study during my mathematics bachelor
 
 ```bash
 cmake>=3.15.2
+gnuplot>=5.2 patchlevel 7
 ```
 
 ## build
