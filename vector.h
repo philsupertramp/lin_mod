@@ -9,6 +9,8 @@ typedef struct vector {
   int totalItems;
 } vector;
 
+#define vector_t double
+
 void vec_init(vector *);
 int vec_total(vector *);
 static void vec_resize(vector *, int);

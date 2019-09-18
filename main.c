@@ -61,6 +61,12 @@ int main(){
   printf("cov val= %f\n", covVar);
   vector lm_ = lm(&x, &y);
   printf("lm:\n beta_0 = %f, beta_1 = %f\n", *vec_get(&lm_, 0), *vec_get(&lm_, 1));
+  vector_t q[5]={1.,2.,3.,4.,5.};
+  printf("q: [\n");
+  for(int i=0; i<5;i++){
+    printf("\t%f\n",q[i]);
+  }
+  printf("]\n");
   return 0;
 }
 
