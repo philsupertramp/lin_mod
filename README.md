@@ -12,6 +12,9 @@ gnuplot>=5.2 patchlevel 7
 ## build
 run `./build.sh`
 
+it will ask you if you want to run tests or the regular programm.
+answer with `Y` to execute tests
+
 ### TOC
 - `vector.h`
   - struct to store information about a vector

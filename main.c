@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "vector.h"
-#include "stat.h"
-#include "plot.h"
+#include "lib/vector.h"
+#include "lib/stat.h"
+#include "lib/plot.h"
+#include "lib/array.h"
 
 #define DEBUG 0
 
-void printArray(double *vec, int size);
-double *allocArray(double *vec, int size);
-void assignVals(double *vec, double[], int);
 
 int main(){
   double *x, *y, *v;
@@ -32,27 +30,5 @@ int main(){
   double ts = getExponent(100);
   printf("exp: %f\n", ts);
   return 0;
-}
-
-
-double *allocArray(double *vec, int size){
-#if DEBUG
-  printf("DEBUG::pre-allocArray size: %d \t|\t vec location: %x\n", sizeof(&vec), vec);
-#endif
-  vec = calloc(size, sizeof(double ));
-#if DEBUG
-  printf("DEBUG::post-allocArray size: %d \t|\t vec location: %x\n", sizeof(&vec), vec);
-#endif
-  return vec;
-}
-
-void printArray(double *vec, int size){
-  printf("vec: [\n");
-  for(int i=0; i<size; i++) printf("\t%f\n", vec[i]);  
-  printf("]\n");
-}
-
-void assignVals(double *vec, double vals[], int len){
-  for(int i=0; i<len;i++) *(vec+i) = vals[i];
 }
 
