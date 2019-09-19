@@ -4,7 +4,7 @@ set -e
 cmake -Wdev --deb-output --build=build/ .
 make
 
-if [[ !$CI ]]; then
+if [ ! $CI ]; then
   echo "build done, execute test?"
   read input
 
