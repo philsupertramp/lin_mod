@@ -45,6 +45,7 @@ void arrayFreeTest(){
   assert(q == preAddr);
   assert(q[0] == 1);
   free(q);
+  q = NULL;
   q = allocArray(q, 2);
   *(q) = 2;
   *(q+1) = 3;
