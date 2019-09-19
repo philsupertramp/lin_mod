@@ -1,4 +1,4 @@
-# math-lib
+# math-lib [![CircleCI](https://circleci.com/gh/philsupertramp/math-lib.svg?style=svg)](https://circleci.com/gh/philsupertramp/math-lib)
 
 a collection of functions I need(ed) to study during my mathematics bachelor
 
