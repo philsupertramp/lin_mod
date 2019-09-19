@@ -4,6 +4,7 @@
 #include <math.h>
 
 #include "stat.h"
+#include "array.h"
 
 
 double round_(double x, int precision){
@@ -101,7 +102,14 @@ lmMod lm_d(double *x, double *y, int size){
   double beta_1 = covar/variance;
   double beta_0 = mean_d(y, size) - beta_1 * mean_d(x, size);
   
-  lmMod mod = {.beta_1=beta_1, .beta_0=beta_0};
+  double *estimate, *residuals;
+  estimate = allocArray(estimate, size);
+  residuals = allocArray(residuals, size);
+  for(int i=0; i<size; i++){
+    estimate[i] = beta_0 + beta_1 * x[i];
+    residuals[i] = y[i] - estimate[i];
+  }
+  lmMod mod = {.beta_1=beta_1, .beta_0=beta_0, .y_estimate=estimate, .residuals=residuals};
   return mod;
 }
 

@@ -23,8 +23,9 @@ int main(){
   printf("mean: \t%f\n", mean_d(x, 10));
   printf("cov: \t%f\n", cov_d(x,y,10));
   printf("var: \t%f\n", var_d(x,10));
-  lmMod mod = lm_d(x,y,10);
+  lmMod mod = lm_d(y,x,10);
   printf("lm: \tbeta_0=%f \tbeta_1=%f\n", mod.beta_0, mod.beta_1);
+  printArray(mod.y_estimate, 10);
   plotAttributes attrs = {title: "Scatterplot", xAxis: "Absatz", yAxis: "Preis"};
   scatterPlot(x, y, 10, attrs);
   double ts = getExponent(100);

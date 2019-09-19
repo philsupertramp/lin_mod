@@ -2,6 +2,9 @@
 #include "../lib/array.h"
 #include <tgmath.h>
 
+double amount[10] = {1585.,1819.,1647.,1496.,921.,1278.,1810.,1987.,1612.,1413.};
+double price[10] = {12.5,10.,9.95,11.5,12.,10.,8.,9.,9.5,12.5};
+
 void test_abs_(){
   double a = -1.;
   double b =  1.;
@@ -69,14 +72,34 @@ void test_cov_d(){
   x = allocArray(x, size);
   y = allocArray(y, size);
 
-  double absatz[10] = {1585.,1819.,1647.,1496.,921.,1278.,1810.,1987.,1612.,1413.};
-  double preis[10] = {12.5,10.,9.95,11.5,12.,10.,8.,9.,9.5,12.5};
-
-  assignVals(x, absatz, size);
-  assignVals(y, preis, size);
+  assignVals(x, amount, size);
+  assignVals(y, price, size);
   assert(round_(cov_d(x, y, 10), 2)==-291.17);
 
   printf("stat::cov_d is working.\n");
+}
+
+void test_lm_d(){
+  double *x, *y;
+  int size = 10;
+
+  x = allocArray(x, size);
+  y = allocArray(y, size);
+
+  assignVals(x, amount, size);
+  assignVals(y, price, size);
+
+  lmMod mod = lm_d(x, y, size);
+
+  double meanA = mean_d(y, 10);
+  double meanB = mean_d(mod.y_estimate, 10);
+
+  assert(round_(mod.beta_0, 3) == 15.373);
+  assert(round_(mod.beta_1, 3) == -0.003);
+  assert(round_(meanA, 2) == round_(meanB, 2));
+  assert(round_(mean_d(mod.residuals, 10), 10) == 0.); 
+
+  printf("stat::lm_d is working.\n");
 }
 
 void testStat(){
@@ -85,6 +108,6 @@ void testStat(){
   test_round_();
   test_mean_d();
   test_cov_d();
-
+  test_lm_d();
   printf("stat is working.\n");
 }

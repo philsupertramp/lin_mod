@@ -5,6 +5,8 @@
 typedef struct lmMod {
   double beta_0;
   double beta_1;
+  double *y_estimate;
+  double *residuals;
 } lmMod;
 
 double round_(double, int);

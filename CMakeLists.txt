@@ -8,6 +8,7 @@ set(SOURCES
   lib/plot.c lib/plot.h
   lib/stat.c lib/stat.h
   lib/vector.c lib/vector.h
+  lib/styling.h
   )
 
 set(MAIN_SOURCES
@@ -18,6 +19,7 @@ set(TEST_SOURCES
   tests/test_array.h
   tests/test_main.c
   tests/test_stat.h
+  tests/test_styling.h
   )
 
 add_executable(ccc ${SOURCES} ${MAIN_SOURCES})
