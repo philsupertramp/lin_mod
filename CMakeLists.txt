@@ -20,6 +20,7 @@ set(TEST_SOURCES
   tests/test_main.c
   tests/test_stat.h
   tests/test_styling.h
+  tests/test_matrix.h
   )
 
 add_executable(ccc ${SOURCES} ${MAIN_SOURCES})

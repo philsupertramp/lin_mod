@@ -1,8 +1,24 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-#include "vector.h"
+//#include "vector.h"
 
+typedef struct matrix {
+  double *_e;
+  unsigned int rows;
+  unsigned int cols;
+} matrix;
+typedef struct vector {
+  double *_e;
+  unsigned int size;
+} vector;
+//#define vector double *
+
+matrix initMatrix(matrix, int, int);
+vector mVecMultiplication(matrix mat, vector vec);
+vector initVec(vector, unsigned int);
+
+/*
 typedef struct matrix {
   vector **items;
   int columns;
@@ -19,5 +35,5 @@ void mat_set(matrix *, int, int, double*);
 vector *mat_get(matrix *, int);
 void mat_delete(matrix *, int);
 void mat_free(matrix *);
-
+*/
 #endif

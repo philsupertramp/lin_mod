@@ -2,5 +2,5 @@
 #include "matrix.h"
 #include "plot.h"
 #include "stat.h"
-#include "vector.h"
+//#include "vector.h"
 

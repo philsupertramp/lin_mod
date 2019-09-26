@@ -1,7 +1,7 @@
 #ifndef STAT_H
 #define STAT_H
 
-#include "vector.h"
+#include "matrix.h"
 typedef struct lmMod {
   double beta_0;
   double beta_1;

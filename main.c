@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lib/vector.h"
+#include "lib/matrix.h"
 #include "lib/stat.h"
 #include "lib/plot.h"
 #include "lib/array.h"

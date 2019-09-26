@@ -2,49 +2,41 @@
 #include <stdlib.h>
 
 #include "matrix.h"
+#include "array.h"
 
+#define SIZE sizeof
 
-void mat_init(int count, ...){
-  va_list args;
-  int size = 2 * INIT_STORAGE_SIZE;
-  matrix *mat;
-  va_start(args, count);
-  if(count > 1) mat = va_arg(args, matrix*);
-  if(count > 2) size = va_arg(args, int);
-  
-  mat->rows = 0;
-  mat->columns = 0;
-  mat->items = malloc(sizeof(double*) * size);
+vector initVec(vector vec, uint _size){
+  vec._e = calloc(_size, SIZE(double));
+  vec.size = _size;
+  return vec;
 }
 
-int mat_col(matrix *mat){
-  return mat->columns;
-}
-int mat_row(matrix *mat){
-  return mat->rows;
-}
-
-static void mat_resize(matrix *mat, int newSize){
-
+matrix initMatrix(matrix Mat, int cols, int rows){
+  vector Elems;
+  Elems = initVec(Elems, cols * rows);
+  Mat._e = Elems._e;
+  Mat.rows = rows;
+  Mat.cols = cols;
+  return Mat; 
 }
 
-void mat_add(matrix *mat, vector *vec){
+vector mVecMultiplication(matrix mat, vector vec){
+  vector result;
+  /*
+   * A = [2, 3]
+   * B = [3, 1]
+   * C = [2, 1]
+   *
+   */
+  result = initVec(result, mat.rows);
+  register int i = 0;
+  register int j = 0;
 
+  for(i=0; i<mat.rows; ++i){
+    for(j=0; j<mat.cols; ++j){
+      result._e[i*(j > 0 ? j : 1)] += mat._e[i*j] * vec._e[j];
+    }
+  }
+  return result;
 }
-
-void mat_set(matrix *mat, int col, int row, double *item){
-
-}
-
-vector *mat_get(matrix *mat, int index){
-
-}
-
-void mat_delete(matrix *mat, int index){
-
-}
-
-void mat_free(matrix* mat){
-
-}
-
