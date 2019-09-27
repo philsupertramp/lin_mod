@@ -2,21 +2,25 @@
 #define MATRIX_H
 
 //#include "vector.h"
+#define u_int unsigned int
 
 typedef struct matrix {
   double *_e;
-  unsigned int rows;
-  unsigned int cols;
+  u_int rows;
+  u_int cols;
 } matrix;
 typedef struct vector {
   double *_e;
-  unsigned int size;
+  u_int size;
 } vector;
 //#define vector double *
 
 matrix initMatrix(matrix, int, int);
 vector mVecMultiplication(matrix mat, vector vec);
 vector initVec(vector, unsigned int);
+void printVec(vector);
+void printMat(matrix);
+int getIndex(int, int, u_int, u_int);
 
 /*
 typedef struct matrix {
