@@ -2,9 +2,7 @@
 #define TEST_STYLING_H
 #include <stdio.h>
 
-#ifndef STYLING_H
 #include "../lib/styling.h"
-#endif
 
 void cprintTest();
 void testStyling();

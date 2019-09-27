@@ -4,11 +4,11 @@ project(ccc C)
 
 set(SOURCES
   lib/array.c lib/array.h
+  lib/styling.h
   lib/matrix.c lib/matrix.h
   lib/plot.c lib/plot.h
   lib/stat.c lib/stat.h
   lib/vector.c lib/vector.h
-  lib/styling.h
   )
 
 set(MAIN_SOURCES

@@ -7,21 +7,21 @@
 #include <stdio.h>
 
 // font style
-char *NORMAL = "0;";
-char *BOLD = "1;";
+const char *NORMAL = "0;";
+const char *BOLD = "1;";
 // colors
-char *RED = "31";
-char *GREEN = "32";
-char *YELLOW = "33";
-char *BLUE = "34";
-char *MAGENTA = "35";
-char *CYAN = "36";
+const char *RED = "31";
+const char *GREEN = "32";
+const char *YELLOW = "33";
+const char *BLUE = "34";
+const char *MAGENTA = "35";
+const char *CYAN = "36";
 // reset
-char *RESET = "0";
+const char *RESET = "0";
 
 
-void cprint(char *, bool, FILE*);
-void cprint(char *color, bool bold, FILE* streamOut){
+void cprint(const char *, bool, FILE*);
+void cprint(const char *color, bool bold, FILE* streamOut){
   bool reset = color==RESET;
   if(color==RESET){
     fprintf(streamOut, "\033[0m");

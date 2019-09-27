@@ -2,6 +2,8 @@
 #define STAT_H
 
 #include "matrix.h"
+
+
 typedef struct lmMod {
   double beta_0;
   double beta_1;
