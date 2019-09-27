@@ -2,6 +2,7 @@
 #define TEST_MATRIX_H
 
 #include "../lib/matrix.h"
+#include "../lib/stat.h"
 
 #define TEST void
 
@@ -82,25 +83,50 @@ TEST testMScalarMult(){
   printf("matrix::mScalarMult is working.\n");
 }
 
-TEST testMMatMult(){
-  matrix A, B, result;
-
-  A = initMatrix(A, 3, 3);
-  B = initMatrix(B, 2, 2);
-  result = initMatrix(result, 3, 2);
-
-  double a[3][3] = {{1., 1., 1.}, {1., 1., 1.}, {1., 1., 1.}};
-  double b[2][3] = {{2., 2., 2.}, {2., 2., 2.}};
-
-  A._e = a;
-  B._e = b;
-
+TEST testMMatMultVal(matrix A, matrix B, double *res, int resRows, int resCols){
+  matrix result;
+  result = initMatrix(result, resRows, resCols);
   result = mMatMult(A, B);
 
-  printMat(result);
-  for(int i=0; i<6; ++i){
-    assert(result._e[i] == 3);
+  matrix q;
+  q = initMatrix(q, resRows, resCols);
+  q._e = res;
+
+  for(int i=0; i<resRows; ++i){
+    for(int j=0; j<resCols; ++j){
+      int index = getIndex(i, j, result.rows, result.cols);
+      assert(round_(result._e[index], 2) == round_(res[index], 2));
+    }
   }
+}
+TEST testMMatMult(){
+  matrix A, B;
+
+  A = initMatrix(A, 3, 3);
+  B = initMatrix(B, 3, 2);
+
+  double a1[3][3] = {{1., 1., 1.}, {1., 1., 1.}, {1., 1., 1.}};
+  double b1[2][3] = {{2., 2., 2.}, {2., 2., 2.}};
+  double res1[6] = {6., 6., 6., 6., 6., 6.};
+
+  A._e = a1;
+  B._e = b1;
+
+  testMMatMultVal(A, B, res1, 3, 2);
+  A = initMatrix(A, 2, 3);
+  B = initMatrix(B, 3, 5);
+
+  double a2[2][3] = {{1.,0., 0.},{0.,1., 0}};
+  double b2[3][5] = {{1.,0.,0.,0.,0.}, {0.,1.,0.,0.,0.}, {0.,0.,1.,0.,0.}};
+  double res2[10] = {
+    1.,0.,0.,0.,0.,
+    0.,1.,0.,0.,0.
+  };
+
+  A._e = a2;
+  B._e = b2;
+
+  testMMatMultVal(A, B, res2, 2, 5);
 
   printf("mat::mMatMult is working.\n");
 }

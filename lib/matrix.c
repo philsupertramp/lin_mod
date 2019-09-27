@@ -19,6 +19,7 @@ matrix initMatrix(matrix Mat, int rows, int cols){
   Mat._e = Elems._e;
   Mat.rows = rows;
   Mat.cols = cols;
+  Mat = mScalarMult(Mat, 0);
   return Mat; 
 }
 
@@ -65,31 +66,26 @@ matrix mScalarMult(matrix mat, double lambda){
 }
 
 matrix mMatMult(matrix A, matrix B){
-  // TODO: handle error
   if(A.cols != B.rows){
     cprint(RED, 1, stdout);
-    printf("ERROR");
+    printf("matrix::mMatMult::ERROR [%d x %d] * [%d x %d] not possible\n", A.rows, A.cols, B.rows, B.cols);
+    cprint(RESET, 0, stdout);
     matrix ERROR;
     return ERROR;
   }
+
   matrix result;
-  printf("A\n");
-  printMat(A);
-  printf("B\n");
-  printMat(B);
   result = initMatrix(result, A.rows, B.cols);
-  printMat(result);
-  double a = 0., b = 0.;
-  for(int i=0; i<A.rows; ++i){
-    for(int j=0; j<B.cols; ++j){
-      for(int k=0; k<B.rows; ++k){
-        a += A._e[getIndex(j, k, A.rows, A.cols)];
-        b += B._e[getIndex(k, j, B.rows, B.cols)];
-        result._e[getIndex(i, j, result.rows, result.cols)] = a * b;
+  double a = 0., b = 0., c = 0.;
+  for(int iA=0; iA<A.rows; ++iA){
+    for(int jB=0; jB<B.cols; ++jB){
+      c = 0.;
+      for(int jA=0; jA<A.cols; ++jA){
+        a = A._e[getIndex(iA, jB, A.rows, A.cols)];
+        b = B._e[getIndex(jB, jA, B.rows, B.cols)];
+        c += a*b;
       }
-      printf("i: %d, j: %d, index: %d\n", i, j, getIndex(i, j, result.rows, result.cols));
-      printf("res = %f, a*b = %f\n", result._e[getIndex(i, j, result.rows, result.cols)], a*b);
-      a = 0, b = 0;
+      result._e[getIndex(iA, jB, result.rows, result.cols)] = c;
     }
   }
   return result;
