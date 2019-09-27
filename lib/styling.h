@@ -1,3 +1,5 @@
+#ifndef STYLING_H
+#define STYLING_H
 /*
  * Text based formatting
  */
@@ -34,3 +36,5 @@ void cprint(char *color, bool bold, FILE* streamOut){
   fprintf(streamOut, color);
   fprintf(streamOut, "m");
 }
+
+#endif

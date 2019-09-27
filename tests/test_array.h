@@ -1,3 +1,6 @@
+#ifndef TEST_ARRAY_H
+#define TEST_ARRAY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -35,4 +38,4 @@ void arrayAssignTest(){
   printf("array::assignVals working.\n");
 }
 
-
+#endif

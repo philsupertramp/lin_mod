@@ -1,3 +1,6 @@
+#ifndef TEST_STAT_H
+#define TEST_STAT_H
+
 #include "../lib/stat.h"
 #include "../lib/array.h"
 #include <tgmath.h>
@@ -111,3 +114,5 @@ void testStat(){
   test_lm_d();
   printf("stat is working.\n");
 }
+
+#endif

@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lib/matrix.h"
-#include "lib/stat.h"
-#include "lib/plot.h"
-#include "lib/array.h"
-
+#include "lib/source.h"
 #define DEBUG 0
 
 

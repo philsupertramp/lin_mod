@@ -1,6 +1,8 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include "array.h"
+
 //#include "vector.h"
 #define u_int unsigned int
 
@@ -21,6 +23,8 @@ vector initVec(vector, unsigned int);
 void printVec(vector);
 void printMat(matrix);
 int getIndex(int, int, u_int, u_int);
+matrix mScalarMult(matrix, double);
+matrix mMatMult(matrix, matrix);
 
 /*
 typedef struct matrix {
