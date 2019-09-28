@@ -25,3 +25,7 @@ set(TEST_SOURCES
 
 add_executable(ccc ${SOURCES} ${MAIN_SOURCES})
 add_executable(ccc-test ${SOURCES} ${TEST_SOURCES})
+
+target_link_libraries(ccc m)
+target_link_libraries(ccc-test m)
+
