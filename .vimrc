@@ -8,6 +8,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+let g:header_auto_add_header = 1
 let g:header_field_author = "Philipp Zettl"
 let g:header_field_author_email = "philipp.zettl@godesteem.de"
 
