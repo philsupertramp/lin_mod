@@ -88,16 +88,15 @@ TEST testMMatMultVal(matrix A, matrix B, double *res, int resRows, int resCols){
   result = initMatrix(result, resRows, resCols);
   result = mMatMult(A, B);
 
-  matrix q;
-  q = initMatrix(q, resRows, resCols);
-  q._e = res;
-
+  printMat(result);
+  printArray(res, resRows * resCols);
   for(int i=0; i<resRows; ++i){
     for(int j=0; j<resCols; ++j){
       int index = getIndex(i, j, result.rows, result.cols);
       assert(round_(result._e[index], 2) == round_(res[index], 2));
     }
   }
+  printf("[%d x %d] is working.\n", resRows, resCols);
 }
 TEST testMMatMult(){
   matrix A, B;
@@ -107,28 +106,55 @@ TEST testMMatMult(){
 
   double a1[3][3] = {{1., 1., 1.}, {1., 1., 1.}, {1., 1., 1.}};
   double b1[2][3] = {{2., 2., 2.}, {2., 2., 2.}};
-  double res1[6] = {6., 6., 6., 6., 6., 6.};
+  double res1[6] = {
+    6., 6., 6.,
+    6., 6., 6.
+  };
 
   A._e = a1;
   B._e = b1;
 
   testMMatMultVal(A, B, res1, 3, 2);
-  A = initMatrix(A, 2, 3);
-  B = initMatrix(B, 3, 5);
-
   double a2[2][3] = {{1.,0., 0.},{0.,1., 0}};
   double b2[3][5] = {{1.,0.,0.,0.,0.}, {0.,1.,0.,0.,0.}, {0.,0.,1.,0.,0.}};
   double res2[10] = {
     1.,0.,0.,0.,0.,
     0.,1.,0.,0.,0.
   };
+  A = initMatrix(A, 2, 3);
+  B = initMatrix(B, 3, 5);
 
   A._e = a2;
   B._e = b2;
 
   testMMatMultVal(A, B, res2, 2, 5);
 
-  printf("mat::mMatMult is working.\n");
+  double a3[3][2] = {
+    {1., 2.},
+    {3., 4.},
+    {5., 6.}
+  };
+  double b3[2][2] = {
+    {2.,  4.},
+    {6., 12.}
+  };
+  double res3[6] = {
+    14., 28.,
+    30., 60.,
+    46., 92.
+  };
+  A = initMatrix(A, 3, 2);
+  B = initMatrix(B, 2, 2);
+
+  A._e = a3;
+  B._e = b3;
+
+  printMat(A);
+  printMat(B);
+
+  testMMatMultVal(A, B, res3, 3, 2);
+
+  printf("matrix::mMatMult is working.\n");
 }
 
 TEST testMatrix(){
@@ -137,6 +163,8 @@ TEST testMatrix(){
   testMVecMultiplication();
   testMScalarMult();
   testMMatMult();
+
+  printf("matrix is working.\n");
 } 
 
 #endif

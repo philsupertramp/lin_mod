@@ -24,6 +24,13 @@ matrix initMatrix(matrix Mat, int rows, int cols){
 }
 
 vector mVecMultiplication(matrix mat, vector vec){
+  if(mat.cols != vec.size){
+    cprint(RED, 1, stderr);
+    printf("mat::mVecMultiplication is not working with [%d x %d] * [%d x 1]", mat.rows, mat.cols, vec.size);
+    cprint(RESET, 0, stderr);
+    vector ERROR;
+    return ERROR;
+  }
   vector result;
   result = initVec(result, mat.rows);
   register int i = 0;
@@ -67,9 +74,9 @@ matrix mScalarMult(matrix mat, double lambda){
 
 matrix mMatMult(matrix A, matrix B){
   if(A.cols != B.rows){
-    cprint(RED, 1, stdout);
+    cprint(RED, 1, stderr);
     printf("matrix::mMatMult::ERROR [%d x %d] * [%d x %d] not possible\n", A.rows, A.cols, B.rows, B.cols);
-    cprint(RESET, 0, stdout);
+    cprint(RESET, 0, stderr);
     matrix ERROR;
     return ERROR;
   }
@@ -81,8 +88,8 @@ matrix mMatMult(matrix A, matrix B){
     for(int jB=0; jB<B.cols; ++jB){
       c = 0.;
       for(int jA=0; jA<A.cols; ++jA){
-        a = A._e[getIndex(iA, jB, A.rows, A.cols)];
-        b = B._e[getIndex(jB, jA, B.rows, B.cols)];
+        a = A._e[getIndex(iA, jA, A.rows, A.cols)];
+        b = B._e[getIndex(jA, jB, B.rows, B.cols)];
         c += a*b;
       }
       result._e[getIndex(iA, jB, result.rows, result.cols)] = c;
