@@ -9,6 +9,7 @@ set(SOURCES
   lib/plot.c lib/plot.h
   lib/stat.c lib/stat.h
   lib/vector.c lib/vector.h
+  lib/nn/neural_network.c lib/nn/neural_network.h
   )
 
 set(MAIN_SOURCES
@@ -21,6 +22,7 @@ set(TEST_SOURCES
   tests/test_stat.h
   tests/test_styling.h
   tests/test_matrix.h
+  tests/test_neural_network.h
   )
 
 add_executable(ccc ${SOURCES} ${MAIN_SOURCES})
