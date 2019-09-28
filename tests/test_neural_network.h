@@ -5,7 +5,8 @@
  * Last Modified Date: 28.09.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
-/**
+/*
+ *
  * tests/test_neural_network.h
  * Copyright (c) 2019 Philipp Zettl <philipp.zettl@godesteem.de>
  *
@@ -26,5 +27,25 @@
 #define TEST_NEURAL_NETWORK
 
 #include "../lib/nn/neural_network.h"
+#define TEST void
 
+TEST testSigmoid(){
+  double result = sigmoid(0);
+  assert(result==0.5);
+  result = sigmoid(1);
+  assert(round_(result, 2) == 0.73);
+  printf("neural_network::sigmoid is working.\n");
+}
+
+TEST testSigmoidDerivative(){
+  double result = sigmoidDerivative(0.5);
+  assert(round_(result, 2)==0.25);
+  printf("neural_network::sigmoidDerivative is working.\n");
+}
+
+TEST testNeuralNetwork(){
+  testSigmoid();
+  testSigmoidDerivative();
+  printf("neural_network is working.\n");
+}
 #endif

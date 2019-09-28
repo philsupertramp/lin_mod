@@ -26,5 +26,6 @@
 #define NEURAL_NETWORK_H
 
 double sigmoid(double);
+double sigmoidDerivative(double);
 
 #endif

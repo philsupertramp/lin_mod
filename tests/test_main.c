@@ -28,6 +28,7 @@ int main(){
   testStat();
   testStyling();
   testMatrix();
+  testNeuralNetwork();
   return 0;
 }
 

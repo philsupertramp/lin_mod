@@ -4,8 +4,9 @@
  * Date              : 28.09.2019
  * Last Modified Date: 28.09.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
- */
-/**
+ *
+ * This file contains a version of code from <https://www.cs.bham.ac.uk/~jxb/NN/nn.html>
+ *
  * lib/nn/neural_network.c
  * Copyright (c) 2019 Philipp Zettl <philipp.zettl@godesteem.de>
  *
@@ -22,9 +23,60 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+#include <fcntl.h>
+
 #include "neural_network.h"
+#include "../matrix.h"
+
+#define rando() ((double)rand()/((double)RAND_MAX+1))
+
+#define eta     0.5
+#define alpha   0.9
+#define smallwt 0.5
 
 double sigmoid(double t){
-  return 1./1+exp(-t);
+  // calculates the sigmoid function
+  double result = 1. / (1. + exp(-t));
+  return result;
+}
+
+double sigmoidDerivative(double sig){
+  // simple derivative of sigmoid
+  double result = sig * (1. - sig);
+  return result;
+}
+
+void initWeight(matrix weight, matrix deltaWeight, int A, int B){
+  // initializes random values for weights
+  // deltaWeight does not need to be initialized with 0.
+  // matrix::initMatrix takes care of that.
+
+  weight = initMatrix(weight, A+1, B+1);
+  deltaWeight = initMatrix(deltaWeight, A+1, B+1);
+
+  for(int j=1;j<=A;j++){
+    for(int i=0; i<=B;i++){
+      int index = getIndex(i,j,A+1,B+1);
+      weight._e[index] = 2. * (rando() - 0.5) * smallwt;
+    }
+  }
+}
+
+void initWeights(int numIn, int numHid, int numOut){
+  // Generates a set of initialized weights and deltaWeights
+  matrix weightIH, deltaWeightIH, weightHO, deltaWeightHO;
+  initWeight(weightIH, deltaWeightIH, numHid, numIn);
+  initWeight(weightHO, deltaWeightHO, numOut, numHid);
+}
+
+void train(
+  matrix weightIH, matrix deltaWeightIH,
+  matrix weightHO, matrix deltaWeightHO,
+  int numPatterns
+){
+  int numHid, numIn, numOut;
 }

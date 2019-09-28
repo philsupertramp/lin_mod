@@ -29,5 +29,6 @@
 #include "test_matrix.h"
 #include "test_stat.h"
 #include "test_styling.h"
+#include "test_neural_network.h"
 
 #endif
