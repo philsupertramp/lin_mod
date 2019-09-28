@@ -35,9 +35,6 @@ vector mVecMultiplication(matrix mat, vector vec){
   result = initVec(result, mat.rows);
   register int i = 0;
   register int j = 0;
-
-  printVec(vec);
-  printMat(mat);
   register int curRow = 0;
 
   for(i=0;i<mat.rows;++i){
@@ -93,6 +90,21 @@ matrix mMatMult(matrix A, matrix B){
         c += a*b;
       }
       result._e[getIndex(iA, jB, result.rows, result.cols)] = c;
+    }
+  }
+  return result;
+}
+
+matrix transpose(matrix mat){
+  matrix result;
+  result = initMatrix(result, mat.cols, mat.rows);
+
+  for(int i=0;i<mat.rows;++i){
+    for(int j=0;j<mat.cols;++j){
+      int indexA = getIndex(i, j, mat.rows, mat.cols);
+      int indexB = getIndex(j, i, mat.cols, mat.rows);
+      double elem = mat._e[indexA];
+      result._e[indexB] = elem;
     }
   }
   return result;

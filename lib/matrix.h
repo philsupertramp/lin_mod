@@ -26,6 +26,7 @@ void printMat(matrix);
 int getIndex(int, int, u_int, u_int);
 matrix mScalarMult(matrix, double);
 matrix mMatMult(matrix, matrix);
+matrix transpose(matrix);
 
 /*
 typedef struct matrix {

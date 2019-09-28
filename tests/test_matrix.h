@@ -88,15 +88,13 @@ TEST testMMatMultVal(matrix A, matrix B, double *res, int resRows, int resCols){
   result = initMatrix(result, resRows, resCols);
   result = mMatMult(A, B);
 
-  printMat(result);
-  printArray(res, resRows * resCols);
   for(int i=0; i<resRows; ++i){
     for(int j=0; j<resCols; ++j){
       int index = getIndex(i, j, result.rows, result.cols);
       assert(round_(result._e[index], 2) == round_(res[index], 2));
     }
   }
-  printf("[%d x %d] is working.\n", resRows, resCols);
+  printf("matrix::mMatMult([%d x %d]) is working.\n", resRows, resCols);
 }
 TEST testMMatMult(){
   matrix A, B;
@@ -149,12 +147,29 @@ TEST testMMatMult(){
   A._e = a3;
   B._e = b3;
 
-  printMat(A);
-  printMat(B);
-
   testMMatMultVal(A, B, res3, 3, 2);
 
   printf("matrix::mMatMult is working.\n");
+}
+
+TEST testTranspose(){
+  matrix res, mat;
+
+  mat = initMatrix(mat, 2, 2);
+  double a1[2][2] = {{1., 2.}, {3., 4.}};
+  double res1[4] = {
+    1., 3.,
+    2., 4.
+  };
+
+  mat._e = a1;
+  res = transpose(mat);
+
+  for(int i=0;i<4;++i){
+    assert(res._e[i] == res1[i]);
+  }
+
+  printf("matrix::transpose is working.\n");
 }
 
 TEST testMatrix(){
@@ -163,6 +178,7 @@ TEST testMatrix(){
   testMVecMultiplication();
   testMScalarMult();
   testMMatMult();
+  testTranspose();
 
   printf("matrix is working.\n");
 } 
