@@ -152,6 +152,15 @@ TEST testMMatMult(){
   printf("matrix::mMatMult is working.\n");
 }
 
+TEST testTransposeVal(matrix mat, double result[], int resSize){
+  matrix res;
+  res = transpose(mat);
+
+  for(int i=0;i<resSize;++i){
+    assert(res._e[i] == result[i]);
+  }
+}
+
 TEST testTranspose(){
   matrix res, mat;
 
@@ -161,13 +170,21 @@ TEST testTranspose(){
     1., 3.,
     2., 4.
   };
-
   mat._e = a1;
-  res = transpose(mat);
 
-  for(int i=0;i<4;++i){
-    assert(res._e[i] == res1[i]);
-  }
+  testTransposeVal(mat, res1, 4);
+
+  double a2[2][3] = {{2., 2., 2.}, {3., 3., 3.}};
+  double res2[6] = {
+    2., 3.,
+    2., 3.,
+    2., 3.
+  };
+  mat = initMatrix(mat, 2, 3);
+
+  mat._e = a2;
+
+  testTransposeVal(mat, res2, 6);
 
   printf("matrix::transpose is working.\n");
 }
