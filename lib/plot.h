@@ -2,7 +2,7 @@
  * File              : plot.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 03.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -35,10 +35,15 @@ typedef struct plotAttributes {
   char title[50];
   char xAxis[50];
   char yAxis[50];
+  int pointStrength;
+  int lineStrength;
+  u_int isStatPlot;
 } plotAttributes;
 
 
+void writeAttributes(plotAttributes, FILE *);
 void scatterPlot(double *, double *, int, plotAttributes);
+void plotFun(double (*fun)(double), int, int, int, int, double, plotAttributes);
 boundary getBoundaries(double *, int);
 double getExponent(double);
 

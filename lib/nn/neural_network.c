@@ -2,7 +2,7 @@
  * File              : neural_network.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 03.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  *
  * This file contains a version of code from <https://www.cs.bham.ac.uk/~jxb/NN/nn.html>
@@ -76,7 +76,20 @@ void initWeights(int numIn, int numHid, int numOut){
 void train(
   matrix weightIH, matrix deltaWeightIH,
   matrix weightHO, matrix deltaWeightHO,
-  int numPatterns
+  matrix input, matrix target,
+  matrix trainData,
+  int numPatterns, int maxTrainIter
 ){
-  int numHid, numIn, numOut;
+  int numHid, numIn, numOut, iterator0;
+  for(int epoch=0; epoch<maxTrainIter; ++epoch){
+    // randomize order of train data
+    for(iterator0=0;iterator0<trainData.cols*trainData.rows;++iterator0){
+      trainData._e[iterator0] = iterator0;
+    }
+    for(iterator0=0; iterator0<trainData.cols*trainData.rows;++iterator0){
+      //TODO: finish    
+    }
+
+  }
+  
 }
