@@ -69,8 +69,7 @@ void scatterPlot(double *x, double *y, int len, plotAttributes attrs){
   
   pclose(gnuplot);
 }
-
-void plotFun(double (*fun)(double), int startX, int endX, int startY, int endY, double stepSize, plotAttributes attrs){
+void plotFun(double (*fun)(double), int startX, int endX, int startY, int endY, double stepSize, plotAttributes attrs, FILE *gnuplot){
   // Plots a given function fun
   // in the range x = [startX, endX] y = [startY, endY] with step size stepSize
   
@@ -89,10 +88,9 @@ void plotFun(double (*fun)(double), int startX, int endX, int startY, int endY, 
   printVec(X);
   printVec(Y);
 #endif
-  FILE *gnuplot = popen("gnuplot --persist", "w");
   writeAttributes(attrs, gnuplot);
 
-  fprintf(gnuplot, "set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth %d pointtype 7 pointsize %d\n", attrs.lineStrength, attrs.pointStrength);
+  fprintf(gnuplot, "set style line 1 linecolor rgb '%s' linetype 1 linewidth %d pointtype 7 pointsize %d\n", attrs.color ? attrs.color : "#4682B4", attrs.lineStrength, attrs.pointStrength);
 
   fprintf(gnuplot, "plot [%d:%d] [%d:%d] '-' with linespoints linestyle 1\n", startX, endX, startY, endY);
   for(int i=0;i<size; ++i){

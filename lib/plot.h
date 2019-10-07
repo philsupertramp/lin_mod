@@ -38,12 +38,14 @@ typedef struct plotAttributes {
   int pointStrength;
   int lineStrength;
   u_int isStatPlot;
+  char color[7];
+  u_int isFirstPlot;
 } plotAttributes;
 
 
 void writeAttributes(plotAttributes, FILE *);
 void scatterPlot(double *, double *, int, plotAttributes);
-void plotFun(double (*fun)(double), int, int, int, int, double, plotAttributes);
+void plotFun(double (*fun)(double), int, int, int, int, double, plotAttributes, FILE*);
 boundary getBoundaries(double *, int);
 double getExponent(double);
 

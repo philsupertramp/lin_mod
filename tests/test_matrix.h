@@ -89,7 +89,7 @@ TEST testMVecMultiplication(){
 }
 
 TEST testMScalarMult(){
-  matrix mat, result;
+  matrixD mat, result;
   double lambda = 2.;
 
   mat = initMatrix(mat, 2, 2);
