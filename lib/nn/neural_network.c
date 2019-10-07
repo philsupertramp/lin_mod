@@ -50,10 +50,10 @@ double sigmoidDerivative(double sig){
   return result;
 }
 
-void initWeight(matrix weight, matrix deltaWeight, int A, int B){
+void initWeight(matrixD weight, matrixD deltaWeight, int A, int B){
   // initializes random values for weights
   // deltaWeight does not need to be initialized with 0.
-  // matrix::initMatrix takes care of that.
+  // matrixD::initMatrix takes care of that.
 
   weight = initMatrix(weight, A+1, B+1);
   deltaWeight = initMatrix(deltaWeight, A+1, B+1);
@@ -68,16 +68,16 @@ void initWeight(matrix weight, matrix deltaWeight, int A, int B){
 
 void initWeights(int numIn, int numHid, int numOut){
   // Generates a set of initialized weights and deltaWeights
-  matrix weightIH, deltaWeightIH, weightHO, deltaWeightHO;
+  matrixD weightIH, deltaWeightIH, weightHO, deltaWeightHO;
   initWeight(weightIH, deltaWeightIH, numHid, numIn);
   initWeight(weightHO, deltaWeightHO, numOut, numHid);
 }
 
 void train(
-  matrix weightIH, matrix deltaWeightIH,
-  matrix weightHO, matrix deltaWeightHO,
-  matrix input, matrix target,
-  matrix trainData,
+  matrixD weightIH, matrixD deltaWeightIH,
+  matrixD weightHO, matrixD deltaWeightHO,
+  matrixD input, matrixD target,
+  matrixD trainData,
   int numPatterns, int maxTrainIter
 ){
   int numHid, numIn, numOut, iterator0;

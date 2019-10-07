@@ -37,7 +37,7 @@ vector initVec(vector vec, uint _size){
   return vec;
 }
 
-matrix initMatrix(matrix Mat, int rows, int cols){
+matrixD initMatrix(matrixD Mat, int rows, int cols){
   vector Elems;
   Elems = initVec(Elems, cols * rows);
   Mat._e = Elems._e;
@@ -47,7 +47,7 @@ matrix initMatrix(matrix Mat, int rows, int cols){
   return Mat; 
 }
 
-vector mVecMultiplication(matrix mat, vector vec){
+vector mVecMultiplication(matrixD mat, vector vec){
   if(mat.cols != vec.size){
     cprint(RED, 1, stderr);
     printf("mat::mVecMultiplication is not working with [%d x %d] * [%d x 1]", mat.rows, mat.cols, vec.size);
@@ -77,7 +77,7 @@ int getIndex(int i, int j, u_int rows, u_int cols){
   return i * cols + j;
 }
 
-void printMat(matrix mat){
+void printMat(matrixD mat){
   printf("mat[%d x %d]: [\n", mat.rows, mat.cols);
   for(int i=0; i<mat.rows*mat.cols; ++i){
     if(i % mat.cols == 0 && i != 0) printf("\n");
@@ -86,23 +86,23 @@ void printMat(matrix mat){
   printf("\n]\n");
 }
 
-matrix mScalarMult(matrix mat, double lambda){
+matrixD mScalarMult(matrixD mat, double lambda){
   for(int i=0; i<mat.cols*mat.rows; ++i){
     mat._e[i] *= lambda;
   }
   return mat;
 }
 
-matrix mMatMult(matrix A, matrix B){
+matrixD mMatMult(matrixD A, matrixD B){
   if(A.cols != B.rows){
     cprint(RED, 1, stderr);
     printf("matrix::mMatMult::ERROR [%d x %d] * [%d x %d] not possible\n", A.rows, A.cols, B.rows, B.cols);
     cprint(RESET, 0, stderr);
-    matrix ERROR;
+    matrixD ERROR;
     return ERROR;
   }
 
-  matrix result;
+  matrixD result;
   result = initMatrix(result, A.rows, B.cols);
   double a = 0., b = 0., c = 0.;
   for(int iA=0; iA<A.rows; ++iA){
@@ -119,8 +119,8 @@ matrix mMatMult(matrix A, matrix B){
   return result;
 }
 
-matrix transpose(matrix mat){
-  matrix result;
+matrixD transpose(matrixD mat){
+  matrixD result;
   result = initMatrix(result, mat.cols, mat.rows);
 
   for(int i=0;i<mat.rows;++i){

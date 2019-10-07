@@ -31,7 +31,7 @@
 #define TEST void
 
 TEST testInitMatrix(){
-  matrix mat;
+  matrixD mat;
   mat = initMatrix(mat, 2, 2);
   assert(mat.cols == 2);
   assert(mat.rows == 2);
@@ -48,7 +48,7 @@ TEST testInitVec(){
   printf("matrix::initVec is working.\n");
 }
 
-TEST testMVecMultValues(matrix mat, vector vec, double res[], int resultSize){
+TEST testMVecMultValues(matrixD mat, vector vec, double res[], int resultSize){
   vector result;
 
   result = mVecMultiplication(mat, vec);
@@ -59,7 +59,7 @@ TEST testMVecMultValues(matrix mat, vector vec, double res[], int resultSize){
 }
 
 TEST testMVecMultiplication(){
-  matrix mat;
+  matrixD mat;
   vector vec;
   int colA1 = 2, rowA1 = 2, sizeB1 = 2, colA2 = 2, rowA2 = 2, sizeB2 = 2;
 
@@ -107,8 +107,8 @@ TEST testMScalarMult(){
   printf("matrix::mScalarMult is working.\n");
 }
 
-TEST testMMatMultVal(matrix A, matrix B, double *res, int resRows, int resCols){
-  matrix result;
+TEST testMMatMultVal(matrixD A, matrixD B, double *res, int resRows, int resCols){
+  matrixD result;
   result = initMatrix(result, resRows, resCols);
   result = mMatMult(A, B);
 
@@ -118,10 +118,10 @@ TEST testMMatMultVal(matrix A, matrix B, double *res, int resRows, int resCols){
       assert(round_(result._e[index], 2) == round_(res[index], 2));
     }
   }
-  printf("matrix::mMatMult([%d x %d]) is working.\n", resRows, resCols);
+  printf("matrixD::mMatMult([%d x %d]) is working.\n", resRows, resCols);
 }
 TEST testMMatMult(){
-  matrix A, B;
+  matrixD A, B;
 
   A = initMatrix(A, 3, 3);
   B = initMatrix(B, 3, 2);
@@ -173,11 +173,11 @@ TEST testMMatMult(){
 
   testMMatMultVal(A, B, res3, 3, 2);
 
-  printf("matrix::mMatMult is working.\n");
+  printf("matrixD::mMatMult is working.\n");
 }
 
-TEST testTransposeVal(matrix mat, double result[], int resSize){
-  matrix res;
+TEST testTransposeVal(matrixD mat, double result[], int resSize){
+  matrixD res;
   res = transpose(mat);
 
   for(int i=0;i<resSize;++i){
@@ -186,7 +186,7 @@ TEST testTransposeVal(matrix mat, double result[], int resSize){
 }
 
 TEST testTranspose(){
-  matrix res, mat;
+  matrixD res, mat;
 
   mat = initMatrix(mat, 2, 2);
   double a1[2][2] = {{1., 2.}, {3., 4.}};

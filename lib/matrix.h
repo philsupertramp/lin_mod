@@ -29,24 +29,24 @@
 
 #define u_int unsigned int
 
-typedef struct matrix {
+typedef struct matrixD {
   double *_e;
   u_int rows;
   u_int cols;
-} matrix;
+} matrixD;
 typedef struct vector {
   double *_e;
   u_int size;
 } vector;
 
-matrix initMatrix(matrix, int, int);
-vector mVecMultiplication(matrix mat, vector vec);
+matrixD initMatrix(matrixD, int, int);
+vector mVecMultiplication(matrixD mat, vector vec);
 vector initVec(vector, unsigned int);
 void printVec(vector);
-void printMat(matrix);
+void printMat(matrixD);
 int getIndex(int, int, u_int, u_int);
-matrix mScalarMult(matrix, double);
-matrix mMatMult(matrix, matrix);
-matrix transpose(matrix);
+matrixD mScalarMult(matrixD, double);
+matrixD mMatMult(matrixD, matrixD);
+matrixD transpose(matrixD);
 
 #endif
