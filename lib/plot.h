@@ -2,7 +2,7 @@
  * File              : plot.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 03.10.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -25,28 +25,15 @@
 #ifndef PLOT_H
 #define PLOT_H
 
-#include "stat.h"
-
-typedef struct boundary {
-  double min;
-  double max;
-} boundary;
-typedef struct plotAttributes {
-  char title[50];
-  char xAxis[50];
-  char yAxis[50];
-  int pointStrength;
-  int lineStrength;
-  u_int isStatPlot;
-  char color[7];
-  u_int isFirstPlot;
-} plotAttributes;
-
+#include "stat/stat.h"
+#include "matrix.h"
 
 void writeAttributes(plotAttributes, FILE *);
 void scatterPlot(double *, double *, int, plotAttributes);
 void plotFun(double (*fun)(double), int, int, int, int, double, plotAttributes, FILE*);
+void genPlotData(matrixD);
 boundary getBoundaries(double *, int);
 double getExponent(double);
+
 
 #endif

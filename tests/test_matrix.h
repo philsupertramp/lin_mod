@@ -2,7 +2,7 @@
  * File              : test_matrix.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -26,7 +26,7 @@
 #define TEST_MATRIX_H
 
 #include "../lib/matrix.h"
-#include "../lib/stat.h"
+#include "../lib/stat/stat.h"
 
 #define TEST void
 

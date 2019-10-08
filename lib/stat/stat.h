@@ -2,7 +2,7 @@
  * File              : stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -25,7 +25,7 @@
 #ifndef STAT_H
 #define STAT_H
 
-#include "matrix.h"
+#include "../matrix.h"
 
 
 typedef struct lmMod {

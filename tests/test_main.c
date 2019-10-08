@@ -2,7 +2,7 @@
  * File              : test_main.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -29,6 +29,7 @@ int main(){
   testStyling();
   testMatrix();
   testNeuralNetwork();
+  testInsurance();
   return 0;
 }
 

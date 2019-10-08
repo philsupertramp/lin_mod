@@ -2,7 +2,7 @@
  * File              : matrix.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -26,22 +26,12 @@
 #define MATRIX_H
 
 #include "array.h"
-
-#define u_int unsigned int
-
-typedef struct matrixD {
-  double *_e;
-  u_int rows;
-  u_int cols;
-} matrixD;
-typedef struct vector {
-  double *_e;
-  u_int size;
-} vector;
+#include "typedef.h"
 
 matrixD initMatrix(matrixD, int, int);
 vector mVecMultiplication(matrixD mat, vector vec);
 vector initVec(vector, unsigned int);
+vectorV initVecV(vectorV, unsigned int);
 void printVec(vector);
 void printMat(matrixD);
 int getIndex(int, int, u_int, u_int);

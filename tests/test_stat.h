@@ -2,7 +2,7 @@
  * File              : test_stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -25,7 +25,7 @@
 #ifndef TEST_STAT_H
 #define TEST_STAT_H
 
-#include "../lib/stat.h"
+#include "../lib/stat/stat.h"
 #include "../lib/array.h"
 #include <tgmath.h>
 

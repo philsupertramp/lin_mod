@@ -2,7 +2,7 @@
  * File              : source.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -29,7 +29,8 @@
 #include "array.h"
 #include "matrix.h"
 #include "plot.h"
-#include "stat.h"
+#include "stat/stat.h"
+#include "stat/insurance.h"
 
 
 #endif

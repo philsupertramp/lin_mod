@@ -2,7 +2,7 @@
  * File              : array.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -25,8 +25,12 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include "matrix.h"
+#include "typedef.h"
+
 void printArray(double *vec, int size);
 double *allocArray(double *vec, int size);
 void assignVals(double *vec, double[], int);
+void assignValsV(vectorV vec, void (*vals[])(double));
 
 #endif

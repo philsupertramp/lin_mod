@@ -2,7 +2,7 @@
  * File              : array.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 28.09.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -26,6 +26,7 @@
 #include <stdio.h>
 
 #include "array.h"
+#include "matrix.h"
 
 double *allocArray(double *vec, int size){
 #if DEBUG
@@ -44,7 +45,10 @@ void printArray(double *vec, int size){
   printf("]\n");
 }
 
+void assignValsV(vectorV vec, void (*vals[])(double)){
+  vec._e = vals;
+}
 void assignVals(double *vec, double vals[], int len){
-  for(int i=0; i<len;i++) *(vec+i) = vals[i];
+  for(int i=0; i<len;i++) *(vec + i) = vals[i];
 }
 

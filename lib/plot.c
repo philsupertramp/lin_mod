@@ -2,7 +2,7 @@
  * File              : plot.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 03.10.2019
+ * Last Modified Date: 08.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -69,6 +69,12 @@ void scatterPlot(double *x, double *y, int len, plotAttributes attrs){
   
   pclose(gnuplot);
 }
+void addDataToPlot(vector X, vector Y, int size, FILE *gnuplot){
+
+  for(int i=0;i<size; ++i){
+    fprintf(gnuplot, "%g %g\n", X._e[i], Y._e[i]);
+  }
+}
 void plotFun(double (*fun)(double), int startX, int endX, int startY, int endY, double stepSize, plotAttributes attrs, FILE *gnuplot){
   // Plots a given function fun
   // in the range x = [startX, endX] y = [startY, endY] with step size stepSize
@@ -90,14 +96,15 @@ void plotFun(double (*fun)(double), int startX, int endX, int startY, int endY, 
 #endif
   writeAttributes(attrs, gnuplot);
 
-  fprintf(gnuplot, "set style line 1 linecolor rgb '%s' linetype 1 linewidth %d pointtype 7 pointsize %d\n", attrs.color ? attrs.color : "#4682B4", attrs.lineStrength, attrs.pointStrength);
+  // configure
+  fprintf(gnuplot, "set style line 1 linecolor rgb '%s' linetype 1 ", attrs.color ? attrs.color : "#4682B4");
+  fprintf(gnuplot, "linewidth %d pointtype 7 ", attrs.lineStrength | 1);
+  fprintf(gnuplot, "pointsize %d\n", attrs.pointStrength | 1);
 
   fprintf(gnuplot, "plot [%d:%d] [%d:%d] '-' with linespoints linestyle 1\n", startX, endX, startY, endY);
-  for(int i=0;i<size; ++i){
-    fprintf(gnuplot, "%g %g\n", X._e[i], Y._e[i]);
-  }
+  addDataToPlot(X, Y, size, gnuplot);
   fprintf(gnuplot, "e\n");
-  pclose(gnuplot);
+  //pclose(gnuplot);
 }
 
 boundary getBoundaries(double *x, int size){
