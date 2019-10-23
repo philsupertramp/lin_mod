@@ -2,7 +2,7 @@
  * File              : test_matrix.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 13.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -213,6 +213,31 @@ TEST testTranspose(){
   printf("matrix::transpose is working.\n");
 }
 
+TEST testInvertMatrixD(){
+  double a[3][3] = {{1.4142, 2.2361, 3.1623}, {4.1231, 5.0990, 6.0828}, {7.0711, 8.0623, 9.0554}};
+  matrixD A;
+  A = initMatrix(A, 3, 3);
+  
+  A._e = a;
+
+  matrixD invA = invertMatrixD(A);
+
+  double res[9] = {
+     10.9011, -19.9476,   9.5926,
+    -21.5775,  36.3258, -16.8659,
+     10.6987, -16.7654,   7.6361
+  };
+  printMat(invA);
+  for(int i=0; i<3;++i){
+    for(int j=0; j<3;++j){
+      int index = getIndex(i, j, invA.cols, invA.rows);
+      printf("%f==%f\n", invA._e[index] , res[index]);
+    }
+  }
+
+  printf("matrix::invertMatrixD is working.\n");
+}
+
 TEST testMatrix(){
   testInitMatrix();
   testInitVec();
@@ -220,6 +245,7 @@ TEST testMatrix(){
   testMScalarMult();
   testMMatMult();
   testTranspose();
+  testInvertMatrixD();
 
   printf("matrix is working.\n");
 } 

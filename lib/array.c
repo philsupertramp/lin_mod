@@ -2,7 +2,7 @@
  * File              : array.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 13.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -40,7 +40,7 @@ double *allocArray(double *vec, int size){
 }
 
 void printArray(double *vec, int size){
-  printf("vec: [\n");
+  printf("vec[%d]: [\n", size);
   for(int i=0; i<size; i++) printf("\t%f\n", vec[i]);  
   printf("]\n");
 }

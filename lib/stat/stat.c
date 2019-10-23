@@ -2,7 +2,7 @@
  * File              : stat.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 22.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /*
@@ -31,6 +31,13 @@
 
 
 double round_(double x, int precision){
+  // rounds to precision
+  // special cases are handed the following
+  // t = x on precision – place
+  // p = x on precision + 1 – place
+  // p >= 5 -> t + 1
+  // p <  5 -> t
+  // TODO: handle case with input < 0 precision
   int prec = pow_(10, precision);
   int lastDigit = abs_((int)(x*prec*10) % 10);
   return ((int)(x * prec) + (lastDigit > 0 && lastDigit >= 5 ? 1 : 0) * (x>0?1:-1))/(double)prec;

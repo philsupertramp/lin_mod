@@ -2,7 +2,7 @@
  * File              : test_stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 22.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -27,6 +27,7 @@
 
 #include "../lib/stat/stat.h"
 #include "../lib/array.h"
+#include "../lib/styling.h"
 #include <tgmath.h>
 
 double amount[10] = {1585.,1819.,1647.,1496.,921.,1278.,1810.,1987.,1612.,1413.};
@@ -129,13 +130,41 @@ void test_lm_d(){
   printf("stat::lm_d is working.\n");
 }
 
+void test_min_d(){
+  
+  double x[5] = {0., 1., 2., 3., -1.};
+
+  assert(min_d(x, 5) == -1.);
+  printf("stat::min_d is working.\n");
+}
+void test_max_d(){
+  double x[5] = {0., 1., 2., 3., -1.};
+
+  assert(max_d(x, 5) == 3.);
+  printf("stat::max_d is working.\n");
+}
+
+void test_coefficientOfDetermination(){
+  vector a, b;
+  a = initVec(a, 10);
+  b = initVec(b, 10);
+  a._e = price;
+  b._e = amount;
+  double result = coefficientOfDetermination(&a, &b);
+  printf("%f\n", result);
+  assert(round_(result, 3) == 0.381);
+}
+
 void testStat(){
   test_abs_();
   test_pow_();
   test_round_();
+  test_min_d();
+  test_max_d();
   test_mean_d();
   test_cov_d();
   test_lm_d();
+  test_coefficientOfDetermination();
   printf("stat is working.\n");
 }
 

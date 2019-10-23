@@ -2,7 +2,7 @@
  * File              : matrix.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 21.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -78,8 +78,8 @@ void printVec(vector vec){
   printArray(vec._e, vec.size);
 }
 
-int getIndex(int i, int j, u_int rows, u_int cols){
-  return i * cols + j;
+int getIndex(int row, int col, u_int rows, u_int cols){
+  return row * cols + col;
 }
 
 void printMat(matrixD mat){
@@ -135,6 +135,52 @@ matrixD transpose(matrixD mat){
       double elem = mat._e[indexA];
       result._e[indexB] = elem;
     }
+  }
+  return result;
+}
+
+matrixD invertMatrixD(matrixD mat){
+  double p = 0, d = 1;
+  matrixD result;
+  result = initMatrix(result, mat.cols, mat.rows);
+  for(p = 0; p<result.cols;++p){
+    int index = getIndex(p, p, result.cols, result.rows);
+    double a = mat._e[index];
+    if(a == 0){
+      fprintf(stderr, "matrix::invertMatrixD cannot calculate A^-1.\n");
+      // break?
+      break;
+    }
+    double d_ = d * a;
+    for(int j=0; j<result.rows;++j){
+      if(j == p){
+        continue;
+      }
+      int newIndex = getIndex(p, j, result.cols, result.rows);
+      result._e[newIndex] = mat._e[newIndex] / a;
+    }
+    printMat(result);
+    for(int i=0; i<result.cols;++i){
+      if(i == p){
+        continue;
+      }
+      int newIndex = getIndex(i, p, result.cols, result.rows);
+      result._e[newIndex] = -mat._e[newIndex] / a; 
+    }
+    printMat(result);
+    for(int i=0; i<result.cols;++i){
+      for(int j=0; j<result.rows;++j){
+        if(i == p || j == p){
+          continue;
+        }
+        int ij = getIndex(i, j, result.cols, result.rows);
+        int pj = getIndex(p, j, result.cols, result.rows);
+        int ip = getIndex(i, p, result.cols, result.rows);
+        result._e[ij] = mat._e[ij] + mat._e[pj] * result._e[ip];
+      }
+    }
+    result._e[index] = 1/mat._e[index];
+    printMat(result);
   }
   return result;
 }

@@ -2,7 +2,7 @@
  * File              : matrix.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 13.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -38,5 +38,6 @@ int getIndex(int, int, u_int, u_int);
 matrixD mScalarMult(matrixD, double);
 matrixD mMatMult(matrixD, matrixD);
 matrixD transpose(matrixD);
+matrixD invertMatrixD(matrixD);
 
 #endif

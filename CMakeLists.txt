@@ -4,6 +4,7 @@ project(ccc C)
 
 set(SOURCES
   lib/typedef.h
+  lib/utils.h lib/utils.c
   lib/array.c lib/array.h
   lib/styling.h lib/styling.c
   lib/matrix.c lib/matrix.h
@@ -11,6 +12,8 @@ set(SOURCES
   lib/vector.c lib/vector.h
   lib/stat/stat.c lib/stat/stat.h
   lib/stat/insurance.c lib/stat/insurance.h
+  lib/numerics/dge.c lib/numerics/dge.h
+  lib/numerics/examples.c lib/numerics/examples.h
   lib/nn/neural_network.c lib/nn/neural_network.h
   )
 
@@ -26,6 +29,7 @@ set(TEST_SOURCES
   tests/test_matrix.h
   tests/test_neural_network.h
   tests/test_insurance.h
+  tests/test_dge.h
   )
 
 add_executable(ccc ${SOURCES} ${MAIN_SOURCES})

@@ -2,7 +2,7 @@
  * File              : plot.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 22.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -25,15 +25,18 @@
 #ifndef PLOT_H
 #define PLOT_H
 
+#include <string.h>
+
 #include "stat/stat.h"
 #include "matrix.h"
+#include "utils.h"
 
-void writeAttributes(plotAttributes, FILE *);
+
+void writeAttributes(plotAttributes);
 void scatterPlot(double *, double *, int, plotAttributes);
-void plotFun(double (*fun)(double), int, int, int, int, double, plotAttributes, FILE*);
+void plotFun(double (*fun)(double), int, int, int, int, double, plotAttributes);
 void genPlotData(matrixD);
 boundary getBoundaries(double *, int);
-double getExponent(double);
-
-
+void plotSlopeField(double (*fun)(double, double), vector, vector, double, plotAttributes);
+void multiPlot(matrixD, plotAttributes);
 #endif

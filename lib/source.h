@@ -2,7 +2,7 @@
  * File              : source.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 11.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -31,6 +31,7 @@
 #include "plot.h"
 #include "stat/stat.h"
 #include "stat/insurance.h"
+#include "numerics/dge.h"
 
 
 #endif

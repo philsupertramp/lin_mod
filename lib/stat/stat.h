@@ -2,7 +2,7 @@
  * File              : stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 22.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -26,14 +26,8 @@
 #define STAT_H
 
 #include "../matrix.h"
+#include "../typedef.h"
 
-
-typedef struct lmMod {
-  double beta_0;
-  double beta_1;
-  double *y_estimate;
-  double *residuals;
-} lmMod;
 
 double round_(double, int);
 double abs_(double);

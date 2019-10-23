@@ -2,11 +2,13 @@
  * File              : typedef.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 08.10.2019
- * Last Modified Date: 08.10.2019
+ * Last Modified Date: 22.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
+
+#include <stdio.h>
 
 #define u_int unsigned int
 /* stat */
@@ -17,6 +19,13 @@ typedef struct interest {
   double K_N;
   double R;
 }interest;
+
+typedef struct lmMod {
+  double beta_0;
+  double beta_1;
+  double *y_estimate;
+  double *residuals;
+} lmMod;
 
 /* plot */
 typedef struct boundary {
@@ -32,6 +41,8 @@ typedef struct plotAttributes {
   u_int isStatPlot;
   char color[7];
   u_int isFirstPlot;
+  FILE *gnuplot;
+  char **plotNames;
 } plotAttributes;
 
 /* common objs */
