@@ -2,7 +2,7 @@
  * File              : stat.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 22.10.2019
+ * Last Modified Date: 25.10.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /*
