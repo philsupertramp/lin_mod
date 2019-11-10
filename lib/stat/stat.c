@@ -2,7 +2,7 @@
  * File              : stat.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 25.10.2019
+ * Last Modified Date: 09.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /*
@@ -137,6 +137,26 @@ double getExponent(double x){
     exponent = exponent + 1;
   }
   return exponent;
+}
+
+double norm_d(double *x, int size, P_NORM type){
+  printf("%s \n", type);
+  if(type == Inf){
+    double maximum = x[0];
+    for(int i=1; i<size;i++){
+      if(abs_(x[i])>maximum){
+        maximum = abs_(x[i]);
+      }
+    }
+    
+    return maximum;
+  }
+  else if(type == Two){
+
+  }
+  else if(type == One){
+
+  }
 }
 
 #endif

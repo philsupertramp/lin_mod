@@ -2,7 +2,7 @@
  * File              : main.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 03.10.2019
- * Last Modified Date: 22.10.2019
+ * Last Modified Date: 10.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 #include <stdio.h>
@@ -26,41 +26,62 @@ int main(){
   int ind = 0;
   matrixD res;
   vector t = initVec(t, 2);
-  t._e[0] =   0;
-  t._e[1] = 250;
-  res = initMatrix(res, (int)250/(1./100), 3);
+  t._e[0] = 0;
+  t._e[1] = 5;
+  res = initMatrix(res, (int)5/(1./100), 20);
   
   
-  void calcAndPlot(double startVal){
-  vector y = initVec(y, 1);
-  y._e[0] = startVal;
-  matrixD result = odeEulerExp(&logGrowth, t, y, 1/100.);
-  vector dt = initVec(dt, result.rows);
-  vector dy = initVec(dy, result.rows); // bc. I know it's just a single value
-  printf("GOOD\n");
-  for(int i=0;i<result.rows;++i){
-    for(int j=0;j<result.cols;++j){
-      if(j==0){
-        res._e[getIndex(i, 0, res.rows, res.cols)] = result._e[getIndex(i, 0, result.rows, result.cols)];
-      }
-      else {
-        res._e[getIndex(i, j + ind, res.rows, res.cols)] = result._e[getIndex(i, j, result.rows, result.cols)];
+  void calcAndPlot(double h){
+    vector y = initVec(y, 1);
+    y._e[0] = 1;
+    matrixD result = odeRK34(&expDGL, t, y, h);
+    vector err = initVec(err, result.rows);
+    vector diff = initVec(err, result.rows);
+    for(int i=0;i<res.rows;++i){
+      double t = 0;
+      for(int j=0;j<res.cols;++j){
+        if(i>result.rows || j>result.cols){
+          res._e[getIndex(i, j + ind, res.rows, res.cols)] = -0.;
+        }
+        else{
+          if(j==0){
+            t = result._e[getIndex(i, 0, result.rows, result.cols)];
+            res._e[getIndex(i, j + ind, res.rows, res.cols)] = t;
+            t = exp(t);
+          }
+          else {
+            double yi = result._e[getIndex(i, j, result.rows, result.cols)];
+            diff._e[i] = yi - t;
+            res._e[getIndex(i, j + ind + 1, res.rows, res.cols)] = yi;
+          }
+        }
       }
     }
-  }
-  ind += 1; 
-
-  //scatterPlot(dt._e, dy._e, dt.size, attrs);
-  } 
-  calcAndPlot(5);
-  calcAndPlot(15);
   
-  printMat(res);
+    err._e[ind] = norm_d(diff._e, diff.size, Inf);
+    ind += 1;
+   printVec(err); 
+
+  }
+  for(int i=10; i<=100; i+=10){
+    calcAndPlot(1./i);
+    printf("%d iterations left.\n", 10 - i/10);
+  }
+  
   FILE *gnuplot = popen("gnuplot --persist", "w");
-  char *title1 = "Startvalue:    5";
-  char *title2 = "Startvalue:   15";
-  char *plotNames[2] = {title1, title2};
-  plotAttributes attrs = {"logarithm growth", "X", "Y", 0, 200, 0, "#008080", gnuplot: gnuplot, plotNames: plotNames};
+  char *title1 = "Schrittweite:   1/10.";
+  char *title2 = "Schrittweite:   1/20.";
+  char *title3 = "Schrittweite:   1/30.";
+  char *title4 = "Schrittweite:   1/40.";
+  char *title5 = "Schrittweite:   1/50.";
+  char *title6 = "Schrittweite:   1/60.";
+  char *title7 = "Schrittweite:   1/70.";
+  char *title8 = "Schrittweite:   1/80.";
+  char *title9 = "Schrittweite:   1/90.";
+  char *title10 = "Schrittweite:   1/100.";
+
+  char *plotNames[10] = {title1, title2, title3, title4, title5, title6, title7, title8, title9, title10};
+  plotAttributes attrs = {"exponential growth", "X", "Y", 0, 10, 0, "#008080", gnuplot: gnuplot, plotNames: plotNames};
   multiPlot(res, attrs);
 
   /*

@@ -2,7 +2,7 @@
  * File              : examples.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 21.10.2019
- * Last Modified Date: 21.10.2019
+ * Last Modified Date: 09.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 
@@ -12,5 +12,6 @@
 
 double logGrowth(double, double);
 double exponentialGrowth(double, double);
+double expDGL(double, double);
 
 #endif

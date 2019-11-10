@@ -2,7 +2,7 @@
  * File              : typedef.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 08.10.2019
- * Last Modified Date: 22.10.2019
+ * Last Modified Date: 09.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 #ifndef TYPEDEF_H
@@ -64,4 +64,6 @@ typedef struct vector {
   double *_e;
   u_int size;
 } vector;
+
+typedef enum { Inf, Two, One } P_NORM;
 #endif

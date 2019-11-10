@@ -2,7 +2,7 @@
  * File              : examples.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 21.10.2019
- * Last Modified Date: 21.10.2019
+ * Last Modified Date: 09.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 #include "examples.h"
@@ -17,4 +17,6 @@ double exponentialGrowth(double ti, double yi){
   double lambda = 0.5;
   return n0 * exp(lambda * (ti - t0));
 }
-
+double expDGL(double ti, double yi){
+  return yi;
+}

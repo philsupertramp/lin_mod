@@ -2,7 +2,7 @@
  * File              : stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 22.10.2019
+ * Last Modified Date: 09.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -36,6 +36,7 @@ double min_d(double *, int);
 double max_d(double *, int);
 double mean(vector *);
 double mean_d(double *, int);
+double norm_d(double *, int, P_NORM);
 double cov(vector *, vector *);
 double cov_d(double *, double *, int);
 double var(vector *);

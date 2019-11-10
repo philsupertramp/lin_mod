@@ -2,7 +2,7 @@
  * File              : plot.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 22.10.2019
+ * Last Modified Date: 10.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -81,18 +81,16 @@ void multiPlot(matrixD mat, plotAttributes attrs){
   FILE* file = fopen("multiPlot_data.txt", "w");
   for(int j=0; j<mat.rows; ++j){
     for(int i=0; i<mat.cols; ++i){
-      fprintf(file, "%g", mat._e[getIndex(j, i, mat.rows, mat.cols)]);
-      fprintf(file, i == mat.cols - 1 ? " " : ", ");
+      double elem = mat._e[getIndex(j, i, mat.rows, mat.cols)];
+        fprintf(file, "%g", elem); 
+        fprintf(file, i == mat.cols - 1 ? " " : ", ");
     }
     fprintf(file, "\n");
   }
-  for(int i=0; i<2; ++i){
-    printf("%s\n", attrs.plotNames[i]);
-  }
-  for(int i=1; i<mat.cols; ++i){
-    fprintf(attrs.gnuplot, i == 1 ? "plot [0:250] [0:20] " : "");
-    fprintf(attrs.gnuplot, "'multiPlot_data.txt' using %d:%d with lines title '%s'", 1, i + 1, attrs.plotNames[i-1]);
-    fprintf(attrs.gnuplot, i == mat.cols - 1 ? "\n" : ",");
+  for(int i=1; i<mat.cols/2; i+=2){
+    fprintf(attrs.gnuplot, i == 1 ? "plot " : "");
+    fprintf(attrs.gnuplot, "'multiPlot_data.txt' using %d:%d with lines title '%s'", i, i + 1, attrs.plotNames[i-1]);
+    fprintf(attrs.gnuplot, i == mat.cols / 2 ? "\n" : ",");
 
   }
   fprintf(attrs.gnuplot, "\n");
@@ -182,9 +180,6 @@ void plotSlopeField(double (*fun)(double, double), vector t, vector y, double s,
   matrixD normdydt = evalSimpleFun(normDyDt, dy);
   matrixD dt = evalSimpleFun(dtF, invertMatrixD(normdydt)); // matrix
 
-  
-
-  
   dy = eval(dyF, dy, normdydt);
 
   writeAttributes(attrs);

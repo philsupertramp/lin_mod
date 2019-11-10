@@ -160,6 +160,8 @@ void test_coefficientOfDetermination(){
   b = initVec(b, 10);
   a._e = y;
   b._e = mod.y_estimate;
+  printVec(a);
+  printVec(b);
   double result = coefficientOfDetermination(&a, &b);
   printf("%f\n", result);
   assert(round_(result, 3) == 0.381);

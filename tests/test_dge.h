@@ -2,11 +2,13 @@
  * File              : test_dge.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 11.10.2019
- * Last Modified Date: 13.10.2019
+ * Last Modified Date: 10.11.2019
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
+#include <math.h>
 #include "../lib/source.h"
 #include "../lib/typedef.h"
+#include "../lib/numerics/examples.h"
 
 double fooF(double ti, double yi){
   return ti + yi;
@@ -108,9 +110,28 @@ TEST testEval(){
   printf("numerics::DGE::eval is working.\n");
 }
 
+TEST testodeRK34(){
+  matrixD res;
+  vector t = initVec(t, 2);
+  t._e[0] =  0;
+  t._e[1] =  5;
+  res = initMatrix(res, (int)5/(1./100), 2);
+  vector y = initVec(y, 1);
+  y._e[0] = 1.;
+  
+  res = odeRK34(&expDGL, t, y, 1/100.);
+  for(int i=0; i<res.rows; ++i){
+    double ti = res._e[getIndex(i, 0, res.rows, res.cols)];
+    double yi = res._e[getIndex(i, 1, res.rows, res.cols)];
+    assert(round_(yi, 5) == round_(exp(ti), 5));
+  }
+  printf("numerics::DGE:ordeRK34 is working.\n");
+}
+
 TEST testDGE(){
   testMeshgrid();
   testEval();
+  testodeRK34();
 
   printf("numerics::DGE is working.\n");
 }
