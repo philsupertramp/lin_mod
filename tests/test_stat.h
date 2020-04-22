@@ -2,7 +2,7 @@
  * File              : test_stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 25.10.2019
+ * Last Modified Date: 20.04.2020
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -166,6 +166,7 @@ void test_coefficientOfDetermination(){
   printf("%f\n", result);
   assert(round_(result, 3) == 0.381);
 }
+
 
 void testStat(){
   test_abs_();

@@ -11,6 +11,7 @@ set(SOURCES
   lib/plot.c lib/plot.h
   lib/vector.c lib/vector.h
   lib/stat/stat.c lib/stat/stat.h
+  lib/stat/finance.c lib/stat/finance.h
   lib/stat/insurance.c lib/stat/insurance.h
   lib/numerics/dge.c lib/numerics/dge.h
   lib/numerics/examples.c lib/numerics/examples.h
@@ -30,6 +31,7 @@ set(TEST_SOURCES
   tests/test_neural_network.h
   tests/test_insurance.h
   tests/test_dge.h
+  tests/test_insurance.h
   )
 
 add_executable(ccc ${SOURCES} ${MAIN_SOURCES})

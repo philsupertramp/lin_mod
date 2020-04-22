@@ -2,7 +2,7 @@
  * File              : test_main.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 11.10.2019
+ * Last Modified Date: 20.04.2020
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -31,6 +31,7 @@ int main(){
   testNeuralNetwork();
   testInsurance();
   testDGE();
+  testFinance();
   return 0;
 }
 

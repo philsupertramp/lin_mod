@@ -2,7 +2,7 @@
  * File              : test_source.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 11.10.2019
+ * Last Modified Date: 20.04.2020
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -32,5 +32,6 @@
 #include "test_neural_network.h"
 #include "test_insurance.h"
 #include "test_dge.h"
+#include "test_finance.h"
 
 #endif

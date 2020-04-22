@@ -2,7 +2,7 @@
  * File              : stat.h
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 09.11.2019
+ * Last Modified Date: 20.04.2020
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /**
@@ -45,5 +45,7 @@ vector lm(vector*, vector*);
 lmMod lm_d(double*, double*, int);
 double coefficientOfDetermination(vector*, vector*);
 double getExponent(double);
+
+double likelihood(vector*);
 
 #endif

@@ -1,0 +1,51 @@
+02f1b39 remove test_coefficientOfDetermination
+bdb8d4a add new stuff
+eb4fa0f add more stat stuff <3
+ec6b6ba WIP on master: d2c2d83 add current changes
+4d891df index on master: d2c2d83 add current changes
+d2c2d83 add current changes
+600df5d rename matrix struct
+ae4f251 add function plot
+209ecfa continue NN stuff
+e5e9728 start NN stuff
+a939299 link math library and add activate some cmake flags
+5a6dd66 extend vimrc
+f97aeee add license
+8b00b4e add license file
+004a2e0 extend transpose test case
+18fbf30 add matrix::transpose
+5c0cd38 add matrix::transpose
+9f9b9ec add matrix::transpose
+8ff6e90 finalize matrix::mMatMult
+0849e4b fix mMatMult
+7ccda1d fix mMatMult
+7fa13c8 make colors const
+ff9feaf make colors const
+2759360 try fixing circular imports
+79b4b52 add matrix vector multiplication
+c1cc316 start working on matrix
+e59a49d start working on matrix
+e53afaa add ci status to readme
+18cb53b remove flaky test (flaky for ci)
+ca7989a MORE STUFF
+b7458df extend test
+8ee096a fix wrong if clause
+e95740a try ci with cmake downgrade
+a37de5c add all new directories
+9581705 add CI support
+9127b3d distribute modules
+0cdfc97 update TOC
+db81d29 update TOC
+3398a5e extend readme
+3a3e343 finally add gitignore file..
+7ae6c13 add plot lib
+8881a36 add double* support
+860ff81 new stuff, maybe gonna change vector in a regular array of doubles...
+dc0594f add readme
+3c9c44f add some simple functionality, test vector of pointers
+c5512a6 add build file
+32b185c add first functions
+99c7ee8 first main
+a944b39 first main
+cd6dc78 first main
+629d754 start project aka init commit

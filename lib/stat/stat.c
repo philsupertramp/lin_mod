@@ -2,7 +2,7 @@
  * File              : stat.c
  * Author            : Philipp Zettl <philipp.zettl@godesteem.de>
  * Date              : 28.09.2019
- * Last Modified Date: 09.11.2019
+ * Last Modified Date: 20.04.2020
  * Last Modified By  : Philipp Zettl <philipp.zettl@godesteem.de>
  */
 /*
@@ -159,4 +159,9 @@ double norm_d(double *x, int size, P_NORM type){
   }
 }
 
+double likelihood(vector* vec){
+  for(int i = 0; i < vec->size; ++i){
+    //vec->_e[i];
+  }
+}
 #endif
